@@ -12,12 +12,30 @@
     <ClCompile Include="$(ProjectDir)src\StdAfx.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\JsonGenerator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\JsonParserCallbackForDataMap.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\JsonParser.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(ProjectDir)src\StdAfx.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="$(ProjectDir)include\csaru-json-cpp.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\JsonGenerator.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\JsonParserCallbackForDataMap.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\JsonParser.hpp">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
