@@ -32,7 +32,7 @@ JsonParserCallbackForDataMap::JsonParserCallbackForDataMap (const CSaruContainer
 
 //=========================================================================
 void JsonParserCallbackForDataMap::BeginObject(const char * name, size_t nameLen) {
-    m_mutator.WriteNameSecure(name, nameLen);
+    m_mutator.WriteNameSecure(name, int(nameLen));
     m_mutator.SetToObjectType();
     m_mutator.CreateAndGotoChildSafe("", 0);
 }
@@ -56,7 +56,7 @@ void JsonParserCallbackForDataMap::EndObject() {
 
 //=========================================================================
 void JsonParserCallbackForDataMap::BeginArray(const char * name, size_t nameLen) {
-    m_mutator.WriteNameSecure(name, nameLen);
+    m_mutator.WriteNameSecure(name, int(nameLen));
     m_mutator.SetToArrayType();
     m_mutator.CreateAndGotoChildSafe("", 0);
 }
@@ -87,14 +87,14 @@ void JsonParserCallbackForDataMap::GotString(const char * name, size_t nameLen, 
 
 //=========================================================================
 void JsonParserCallbackForDataMap::GotFloat(const char * name, size_t nameLen, float value) {
-    m_mutator.WriteNameSecure(name, nameLen);
+    m_mutator.WriteNameSecure(name, int(nameLen));
     m_mutator.Write(value);
     m_mutator.Walk(1);
 }
 
 //=========================================================================
 void JsonParserCallbackForDataMap::GotInteger(const char * name, size_t nameLen, int value) {
-    m_mutator.WriteNameSecure(name, nameLen);
+    m_mutator.WriteNameSecure(name, int(nameLen));
     m_mutator.Write(value);
     m_mutator.Walk(1);
 }
