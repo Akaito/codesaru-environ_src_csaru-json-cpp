@@ -20,20 +20,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#include "JsonParser.hpp"
-
 #include <cstdio>
-// atoi()
-#include <cstdlib>
-// memcpy()
-#include <cstring>
+#include <cstdlib> // atoi()
+#include <cstring> // memcpy()
 
 // GetSystemPageSize()
-#include <csaru-core-cpp.h>
+#include <csaru-core-cpp/csaru-core-cpp.h>
+
+#include "../include/JsonParser.hpp"
 
 #ifdef _MSC_VER
     #pragma warning(push)
-    // yes I'm using sprintf() in some places.  Not sprintf_s; for cross-platform
+    // Using sprintf() in some places.  Not sprintf_s; for cross-platform
     //   compatibility.
     #pragma warning(disable: 4996)
 #endif 

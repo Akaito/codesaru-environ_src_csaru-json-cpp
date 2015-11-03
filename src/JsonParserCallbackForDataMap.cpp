@@ -20,8 +20,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#include "JsonParserCallbackForDataMap.hpp"
-#include <DataNode.hpp>
+#include <csaru-container-cpp/DataNode.hpp>
+
+#include "../include/JsonParserCallbackForDataMap.hpp"
 
 namespace CSaruJson {
 

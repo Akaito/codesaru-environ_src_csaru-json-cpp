@@ -22,8 +22,9 @@ SOFTWARE.
 
 #pragma once
 
+#include <csaru-container-cpp/DataMapMutator.hpp>
+
 #include "JsonParser.hpp"
-#include <DataMapMutator.hpp>
 
 namespace CSaruJson {
 

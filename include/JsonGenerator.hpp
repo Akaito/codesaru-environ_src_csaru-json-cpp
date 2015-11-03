@@ -25,7 +25,7 @@ SOFTWARE.
 // std::FILE
 #include <cstdio>
 
-#include <csaru-container-cpp.h>
+#include <csaru-container-cpp/csaru-container-cpp.h>
 
 namespace CSaruJson {
 

@@ -20,7 +20,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#include "JsonGenerator.hpp"
+#include "../include/JsonGenerator.hpp"
 
 #if _MSC_VER > 1000
     #pragma warning(push)
