@@ -1,5 +1,5 @@
 #pragma once
 
-#include <JsonGenerator.hpp>
-#include <JsonParser.hpp>
-#include <JsonParserCallbackForDataMap.hpp>
+#include <csaru-json-cpp/JsonGenerator.hpp>
+#include <csaru-json-cpp/JsonParser.hpp>
+#include <csaru-json-cpp/JsonParserCallbackForDataMap.hpp>
