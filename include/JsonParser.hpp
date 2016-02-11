@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2015 Christopher Higgins Barrett
+Copyright (c) 2016 Christopher Higgins Barrett
 
 This software is provided 'as-is', without any express or implied
 warranty. In no event will the authors be held liable for any damages
@@ -20,14 +20,16 @@ freely, subject to the following restrictions:
 
 #pragma once
 
+#include <cstdio>
+
 namespace CSaruJson {
 
 class JsonParser {
 public:
     // Types and Constants
-    static const size_t s_maxNameLength = 28;
-    static const size_t s_maxStringLength = 64;
-    static const size_t s_maxDepth = 7;
+    static const std::size_t s_maxNameLength = 28;
+    static const std::size_t s_maxStringLength = 64;
+    static const std::size_t s_maxDepth = 7;
 
     enum class ErrorStatus {
         NotStarted = 0,
@@ -104,45 +106,45 @@ public:
     struct CallbackInterface {
         virtual ~CallbackInterface () {}
 
-        virtual void BeginObject (const char * name, size_t name_len) = 0;
+        virtual void BeginObject (const char * name, std::size_t name_len) = 0;
         virtual void EndObject () = 0;
-        virtual void BeginArray (const char * name, size_t name_len) = 0;
+        virtual void BeginArray (const char * name, std::size_t name_len) = 0;
         virtual void EndArray () = 0;
-        virtual void GotString (const char * name, size_t name_len, const char * value, size_t value_len) = 0;
-        virtual void GotFloat (const char * name, size_t name_len, float value) = 0;
-        virtual void GotInteger (const char * name, size_t name_len, int value) = 0;
-        virtual void GotBoolean (const char * name, size_t name_len, bool value) = 0;
-        virtual void GotNull (const char * name, size_t name_len) = 0;
+        virtual void GotString (const char * name, std::size_t name_len, const char * value, std::size_t value_len) = 0;
+        virtual void GotFloat (const char * name, std::size_t name_len, float value) = 0;
+        virtual void GotInteger (const char * name, std::size_t name_len, int value) = 0;
+        virtual void GotBoolean (const char * name, std::size_t name_len, bool value) = 0;
+        virtual void GotNull (const char * name, std::size_t name_len) = 0;
     };
 
 
 private:
     // Data
     // all just for reading in from a file
-    char   m_tempName[s_maxNameLength + 1];
-    char   m_tempData[s_maxStringLength + 1];
+    char        m_tempName[s_maxNameLength + 1];
+    char        m_tempData[s_maxStringLength + 1];
     // always points at one-past-the-last element
-    size_t m_tempNameIndex;
-    size_t m_tempDataIndex;
+    std::size_t m_tempNameIndex;
+    std::size_t m_tempDataIndex;
 
     // holds true for objects, false for arrays.  Needed to keep proper track
     //   of what data has names, and what doesn't.
-    bool   m_objectTypeStack[s_maxDepth];
+    bool        m_objectTypeStack[s_maxDepth];
     // points to one-past-the-last element we're using.
-    size_t m_objectTypeStackIndex;
+    std::size_t m_objectTypeStackIndex;
 
     ErrorStatus  m_errorStatus;
     ParserStatus m_parserStatus;
 
     CallbackInterface * m_dataCallback;
 
-    size_t m_currentRow;
-    size_t m_currentColumn;
+    std::size_t m_currentRow;
+    std::size_t m_currentColumn;
 
     // parse-in-progress data
     const char * m_source;
-    size_t       m_sourceSize;
-    size_t       m_sourceIndex;
+    std::size_t  m_sourceSize;
+    std::size_t  m_sourceIndex;
 
     // Helpers
     /*
@@ -227,12 +229,12 @@ public:
     bool ParseEntireFile (
         std::FILE *         file,
         char *              freadBuffer,
-        size_t              freadBufferSizeInElements,
+        std::size_t         freadBufferSizeInElements,
         CallbackInterface * dataCallback
     );
 
     // PRE: If beginning on a new set of data, you must Reset() this first.
-    bool ParseBuffer (const char * buffer, size_t bufferSize, CallbackInterface * dataCallback);
+    bool ParseBuffer (const char * buffer, std::size_t bufferSize, CallbackInterface * dataCallback);
 
     // Use Reset before you parse different data.  Such as if you want to parse
     //   a totally different set of data; after a successful, failed, or

@@ -9,6 +9,11 @@ include($ENV{CSaruDir}/cmake/CSaru.cmake)
 # Pass the version of your project; it's not related to the CSaruEnviron.
 CSaru_Lib(1.4)
 
+# Custom stuff hand-edited into this CMakeLists ...
+
+set(CXX_STANDARD_REQUIRED true)
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
+
 CSaru_Depends("csaru-core-cpp")
 CSaru_Depends("csaru-container-cpp")
 

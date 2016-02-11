@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2015 Christopher Higgins Barrett
+Copyright (c) 2016 Christopher Higgins Barrett
 
 This software is provided 'as-is', without any express or implied
 warranty. In no event will the authors be held liable for any damages
@@ -28,10 +28,10 @@ freely, subject to the following restrictions:
 #include "../include/JsonParser.hpp"
 
 #ifdef _MSC_VER
-    #pragma warning(push)
+#	pragma warning(push)
     // Using sprintf() in some places.  Not sprintf_s; for cross-platform
     //   compatibility.
-    #pragma warning(disable: 4996)
+#	pragma warning(disable: 4996)
 #endif 
 
 namespace CSaruJson {
@@ -661,7 +661,12 @@ void JsonParser::Reset () {
 
 //=========================================================================
 void JsonParser::NotifyOfError (const char * message) {
-    fprintf(stderr, "  JsonParser error: (row %d, col %d)\n", m_currentRow, m_currentColumn);
+    fprintf(
+        stderr,
+        "  JsonParser error: (row " PF_SIZE_T ", col " PF_SIZE_T ")\n",
+        m_currentRow,
+        m_currentColumn
+    );
     // self-described error
     if (message)
         fprintf(stderr, "%s\nJsonParser Status: ", message);
