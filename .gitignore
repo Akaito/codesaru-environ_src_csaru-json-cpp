@@ -1,16 +1,24 @@
+# Vim
 *~
 *.swp
-__pycache__
+*.vim
 
-CMakeFiles
-CMakeCache.txt
-*.cmake
-install_manifest.txt
-
+# Visual Studio
 Debug
 Release
-*vcxproj*.user
-Makefile
+*vcxproj*
+*.sln
+*.sdf
 
+# nix
+Makefile
 *.a
 
+# CMake
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
+install_manifest.txt
+
+# Python
+__pycache__
