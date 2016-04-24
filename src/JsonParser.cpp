@@ -629,6 +629,11 @@ bool JsonParser::ParseBuffer (const char * buffer, size_t bufferSize, CallbackIn
                     m_sourceIndex  = m_sourceSize;
                     m_parserStatus = ParserStatus::Done;
                 } break;
+
+				case ParserStatus::Done: {
+					// Shouldn't get calling back into this loop if we're already Done.
+					// Could error, but this also doesn't break anything.
+				} break;
             } // end case ParserStatus::BeganObject:
         } // end switch (m_parserStatus)
     } // end while (parser status, etc.)
@@ -675,6 +680,11 @@ void JsonParser::NotifyOfError (const char * message) {
         case ErrorStatus::Error_CantAccessData: {
             fprintf(stderr, "Can't access data.");
         } break;
+
+		default:
+			// All other errors should've written more interesting messages
+			// already; nothing more to add here.
+			break;
     }
     fprintf(stderr, "\n\n");
 }

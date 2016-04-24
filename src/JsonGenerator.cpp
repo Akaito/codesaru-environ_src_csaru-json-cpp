@@ -106,6 +106,7 @@ bool JsonGenerator::WriteJsonToFile (
     }
     // write data based on current node type
     switch (reader->GetCurrentNode()->GetType()) {
+		case CSaruContainer::DataNode::Type::Unused: // may want to error here instead
         case CSaruContainer::DataNode::Type::Null: {
             fprintf(file, "null");
         } break;
