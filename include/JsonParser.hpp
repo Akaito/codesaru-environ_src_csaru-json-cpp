@@ -29,7 +29,7 @@ public:
     // Types and Constants
     static const std::size_t s_maxNameLength = 28;
     static const std::size_t s_maxStringLength = 64;
-    static const std::size_t s_maxDepth = 7;
+    static const std::size_t s_maxDepth = 15; // TODO: Error loudly if this is passed.
 
     enum class ErrorStatus {
         NotStarted = 0,
