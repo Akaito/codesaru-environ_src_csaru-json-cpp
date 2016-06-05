@@ -20,7 +20,7 @@ freely, subject to the following restrictions:
 
 #pragma once
 
-#include <csaru-container-cpp/DataMapMutator.hpp>
+#include <csaru-datamap-cpp/DataMapMutator.hpp>
 
 #include "JsonParser.hpp"
 
@@ -29,14 +29,14 @@ namespace CSaruJson {
 class JsonParserCallbackForDataMap : public JsonParser::CallbackInterface {
 private:
     // Data
-    CSaruContainer::DataMapMutator m_mutator;
+    CSaruDataMap::DataMapMutator m_mutator;
 
 public:
     // Methods
-    JsonParserCallbackForDataMap (const CSaruContainer::DataMapMutator & mutator);
+    JsonParserCallbackForDataMap (const CSaruDataMap::DataMapMutator & mutator);
 
     // Commands
-    void SetMutator (const CSaruContainer::DataMapMutator & mutator);
+    void SetMutator (const CSaruDataMap::DataMapMutator & mutator);
 
     // CallbackInterface implementations
     virtual void BeginObject (const char * name, size_t nameLen);

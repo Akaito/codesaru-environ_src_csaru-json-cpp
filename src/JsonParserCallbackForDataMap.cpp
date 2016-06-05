@@ -18,14 +18,14 @@ freely, subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 */
 
-#include <csaru-container-cpp/DataNode.hpp>
+#include <csaru-datamap-cpp/DataNode.hpp>
 
 #include "../include/JsonParserCallbackForDataMap.hpp"
 
 namespace CSaruJson {
 
 //=========================================================================
-JsonParserCallbackForDataMap::JsonParserCallbackForDataMap (const CSaruContainer::DataMapMutator & mutator)
+JsonParserCallbackForDataMap::JsonParserCallbackForDataMap (const CSaruDataMap::DataMapMutator & mutator)
     : m_mutator(mutator)
 {}
 
@@ -41,7 +41,7 @@ void JsonParserCallbackForDataMap::EndObject() {
     // we only want to clean the last child if it was a temporary write-location
     //  created while parsing.  If we've just bubbled back up from lower nodes,
     //  the last child should _not_ be deleted.
-    if (m_mutator.GetCurrentNode()->GetType() == CSaruContainer::DataNode::Type::Unused) {
+    if (m_mutator.GetCurrentNode()->GetType() == CSaruDataMap::DataNode::Type::Unused) {
         m_mutator.ToParent();
         m_mutator.DeleteLastChildren(1);
     }
@@ -69,7 +69,7 @@ void JsonParserCallbackForDataMap::EndArray()
     // we only want to clean the last child if it was a temporary write-location
     //  created while parsing.  If we've just bubbled back up from lower nodes,
     //  the last child should _not_ be deleted.
-    if (m_mutator.GetCurrentNode()->GetType() == CSaruContainer::DataNode::Type::Unused) {
+    if (m_mutator.GetCurrentNode()->GetType() == CSaruDataMap::DataNode::Type::Unused) {
         m_mutator.ToParent();
         m_mutator.DeleteLastChildren(1);
     }
@@ -109,7 +109,7 @@ void JsonParserCallbackForDataMap::GotNull(const char * name, size_t nameLen) {
 }
 
 //=========================================================================
-void JsonParserCallbackForDataMap::SetMutator(const CSaruContainer::DataMapMutator & mutator) {
+void JsonParserCallbackForDataMap::SetMutator(const CSaruDataMap::DataMapMutator & mutator) {
     m_mutator = mutator;
 }
 

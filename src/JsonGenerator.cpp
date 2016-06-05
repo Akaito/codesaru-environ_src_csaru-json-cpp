@@ -29,7 +29,7 @@ freely, subject to the following restrictions:
 namespace CSaruJson {
 
 //=========================================================================
-bool JsonGenerator::WriteToFile (CSaruContainer::DataMapReader * reader, char const * filename) {
+bool JsonGenerator::WriteToFile (CSaruDataMap::DataMapReader * reader, char const * filename) {
     // check for NULL reader
     if (reader == NULL) {
         #ifdef _DEBUG
@@ -61,7 +61,7 @@ bool JsonGenerator::WriteToFile (CSaruContainer::DataMapReader * reader, char co
 }
 
 //=========================================================================
-bool JsonGenerator::WriteToStream (CSaruContainer::DataMapReader * reader, std::FILE * file) {
+bool JsonGenerator::WriteToStream (CSaruDataMap::DataMapReader * reader, std::FILE * file) {
     // check for NULL reader
     if (reader == NULL) {
         #ifdef _DEBUG
@@ -92,7 +92,7 @@ bool JsonGenerator::WriteIndent (std::FILE * file, int indentAmount) {
 //=========================================================================
 bool JsonGenerator::WriteJsonToFile (
     std::FILE *                     file,
-    CSaruContainer::DataMapReader * reader,
+    CSaruDataMap::DataMapReader * reader,
     bool                            currentNodeWritesName
 ) {
     // indent
@@ -106,12 +106,12 @@ bool JsonGenerator::WriteJsonToFile (
     }
     // write data based on current node type
     switch (reader->GetCurrentNode()->GetType()) {
-		case CSaruContainer::DataNode::Type::Unused: // may want to error here instead
-        case CSaruContainer::DataNode::Type::Null: {
+		case CSaruDataMap::DataNode::Type::Unused: // may want to error here instead
+        case CSaruDataMap::DataNode::Type::Null: {
             fprintf(file, "null");
         } break;
 
-        case CSaruContainer::DataNode::Type::Object: {
+        case CSaruDataMap::DataNode::Type::Object: {
             fprintf(file, "{\n");
             // objects tend to have children, print them if this one has any
             if (reader->GetCurrentNode()->HasChildren()) {
@@ -124,7 +124,7 @@ bool JsonGenerator::WriteJsonToFile (
         fprintf(file, "}");
         } break;
 
-        case CSaruContainer::DataNode::Type::Array: {
+        case CSaruDataMap::DataNode::Type::Array: {
             fprintf(file, "[\n");
             // arrays tend to have children, print them if this one has any
             if (reader->GetCurrentNode()->HasChildren()) {
@@ -137,22 +137,22 @@ bool JsonGenerator::WriteJsonToFile (
             fprintf(file, "]");
         } break;
 
-        case CSaruContainer::DataNode::Type::Bool: {
+        case CSaruDataMap::DataNode::Type::Bool: {
             if (reader->ReadBool())
                 fprintf(file, "true");
             else
                 fprintf(file, "false");
         } break;
 
-        case CSaruContainer::DataNode::Type::Int: {
+        case CSaruDataMap::DataNode::Type::Int: {
             fprintf(file, "%d", reader->ReadInt());
         } break;
 
-        case CSaruContainer::DataNode::Type::Float: {
+        case CSaruDataMap::DataNode::Type::Float: {
             fprintf(file, "%f", reader->ReadFloat());
         } break;
 
-        case CSaruContainer::DataNode::Type::String: {
+        case CSaruDataMap::DataNode::Type::String: {
             fprintf(file, "\"");
             WriteEscapedStringToFile(file, reader->ReadString());
             fprintf(file, "\"");

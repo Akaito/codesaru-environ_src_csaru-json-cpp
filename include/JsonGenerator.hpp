@@ -23,7 +23,7 @@ freely, subject to the following restrictions:
 // std::FILE
 #include <cstdio>
 
-#include <csaru-container-cpp/csaru-container-cpp.h>
+#include <csaru-datamap-cpp/csaru-datamap-cpp.h>
 
 namespace CSaruJson {
 
@@ -31,14 +31,14 @@ class JsonGenerator {
 private:
     // Helpers
     static bool WriteIndent (std::FILE * file, int indentAmount);
-    static bool WriteJsonToFile (std::FILE * file, CSaruContainer::DataMapReader * reader, bool currentNodeWritesName);
+    static bool WriteJsonToFile (std::FILE * file, CSaruDataMap::DataMapReader * reader, bool currentNodeWritesName);
     static void WriteEscapedStringToFile (std::FILE * file, const char * string);
 
 public:
     // Methods
     // reader is assumed to be valid, and *WILL * be modified
-    static bool WriteToFile (CSaruContainer::DataMapReader * reader, char const * filename);
-    static bool WriteToStream (CSaruContainer::DataMapReader * reader, std::FILE * file);
+    static bool WriteToFile (CSaruDataMap::DataMapReader * reader, char const * filename);
+    static bool WriteToStream (CSaruDataMap::DataMapReader * reader, std::FILE * file);
 
     DISALLOW_COPY_AND_ASSIGN(JsonGenerator)
     JsonGenerator () = delete;
