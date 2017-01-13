@@ -20,7 +20,7 @@ freely, subject to the following restrictions:
 
 #include <csaru-datamap-cpp/DataNode.hpp>
 
-#include "../include/JsonParserCallbackForDataMap.hpp"
+#include "exported/JsonParserCallbackForDataMap.hpp"
 
 namespace CSaruJson {
 

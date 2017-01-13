@@ -23,7 +23,7 @@ freely, subject to the following restrictions:
 // std::FILE
 #include <cstdio>
 
-#include <csaru-datamap-cpp/csaru-datamap-cpp.h>
+#include <csaru-datamap-cpp/csaru-datamap-cpp.hpp>
 
 namespace CSaruJson {
 

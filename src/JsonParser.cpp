@@ -23,9 +23,9 @@ freely, subject to the following restrictions:
 #include <cstring> // memcpy()
 
 // GetSystemPageSize()
-#include <csaru-core-cpp/csaru-core-cpp.h>
+#include <csaru-core-cpp/csaru-core-cpp.hpp>
 
-#include "../include/JsonParser.hpp"
+#include "exported/JsonParser.hpp"
 
 #ifdef _MSC_VER
 #	pragma warning(push)
